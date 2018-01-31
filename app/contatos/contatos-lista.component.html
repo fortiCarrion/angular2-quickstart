@@ -1,0 +1,43 @@
+<div class="container">
+    
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h2>Meus Contatos</h2>
+    
+                <table class="table table-striped table-hover">
+    
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th class="text-center">Opções</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr *ngFor="let c of contatos">
+                            <td>{{ c.nome}}</td>
+                            <td>{{ c.email}}</td>
+                            <td>{{ c.telefone}}</td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-info active">
+                                        <input type="radio" name="options" id="editar" autocomplete="off"> Editar
+                                    </label>
+                                    <label class="btn btn-warning">
+                                        <input type="radio" name="options" id="atualizar" autocomplete="off"> Atualizar
+                                    </label>
+                                    <label class="btn btn-danger">
+                                       <input type="radio" name="options" id="deletar" autocomplete="off"> Deletar
+                                     </label>
+                                </div>
+                            </td>
+                        </tr>
+   
+                    </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </div>
