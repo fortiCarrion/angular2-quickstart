@@ -1,13 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {Contato} from './contato.model';
-import {CONTATOS} from './contatos-mock';
+import {ContatoService} from './contato.service';
+
 
 @Component({
     moduleId: module.id,
     selector: 'contatos-lista',
-    templateUrl: 'contatos-lista.component.html'
+    templateUrl: 'contatos-lista.component.html',
+
 })
-export class ContatosListaComponent{
-    contatos: Contato[] = CONTATOS;
+export class ContatosListaComponent implements OnInit{
+    contatos: Contato[];
+
+    //usamos o construtor apenas para inicializacoes mais simples
+    constructor(private contatoService: ContatoService){}
+
+    //implementando um ciclo de vida
+    ngOnInit():void{
+        this.contatos = this.contatoService.getContatos();
+    }
 }
