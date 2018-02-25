@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+//fornecer as diretivas mais comumentes usadas no Angula2, exemplo *ngfor
 import {CommonModule} from '@angular/common';
 
 import {ContatoDetalheComponent} from './contato-detalhe.component';
