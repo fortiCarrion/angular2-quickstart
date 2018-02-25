@@ -15,6 +15,7 @@ import {AppRoutingModule} from './app-routing.module';
     ],
     //listar todos os componentes, diretivas, pipes em que iremos usar neste modulo
     declarations: [AppComponent],
+    //qual eh o componente root, de onde vai comecar a nossa aplicacao
     bootstrap: [AppComponent]
 })
 export class AppModule {}
