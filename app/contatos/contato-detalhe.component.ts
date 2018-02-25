@@ -8,9 +8,19 @@ import { ContatoService } from './contato.service'
 @Component({
     moduleId: module.id,
     selector:'contato-detalhe',
-    templateUrl: 'contato-detalhe.component.html'
+    templateUrl: 'contato-detalhe.component.html',
+    styles:[`
+        .ng-valid[required] {
+            border: 2px solid green;
+        }
+        .ng-invalid:not(form){
+            border: 2px solid red;
+        }
+    `]
 })
 export class ContatoDetalheComponent implements OnInit{
+
+    contato: Contato;
 
     constructor(
         private contatoService: ContatoService,
@@ -19,17 +29,19 @@ export class ContatoDetalheComponent implements OnInit{
     ){}
 
     ngOnInit(): void{
-        console.log("on init");
+        this.contato = new Contato(0,'','','');
         //params: retorna um observabel que contem no parametro da nossa rota
         this.route.params.forEach((params: Params) => {
             //+: converte para um numero a string
             let id: number = +params['id'];
-            console.log(id);
 
-            this.contatoService.getContato(id)
+            if(id){
+                this.contatoService.getContato(id)
                 .then((contato: Contato) => {
-                    console.log(contato);
+                    this.contato = contato;
                 });
+            }
+            
         });
     }
 } 
