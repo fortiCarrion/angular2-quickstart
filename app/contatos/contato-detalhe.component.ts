@@ -8,19 +8,12 @@ import { ContatoService } from './contato.service'
 @Component({
     moduleId: module.id,
     selector:'contato-detalhe',
-    templateUrl: 'contato-detalhe.component.html',
-    styles:[`
-        .ng-valid[required] {
-            border: 2px solid green;
-        }
-        .ng-invalid:not(form){
-            border: 2px solid red;
-        }
-    `]
+    templateUrl: 'contato-detalhe.component.html'
 })
 export class ContatoDetalheComponent implements OnInit{
 
     contato: Contato;
+    private isNew: boolean = true;
 
     constructor(
         private contatoService: ContatoService,
@@ -36,6 +29,9 @@ export class ContatoDetalheComponent implements OnInit{
             let id: number = +params['id'];
 
             if(id){
+
+                this.isNew = false;
+
                 this.contatoService.getContato(id)
                 .then((contato: Contato) => {
                     this.contato = contato;
@@ -43,5 +39,17 @@ export class ContatoDetalheComponent implements OnInit{
             }
             
         });
+    }
+
+    getFormGroupClass(isValid: boolean, isPristine: boolean): {} {
+        return{
+            'form-group': true,
+            'is-invalid': !isValid && !isPristine,
+            'is-valid': isValid && !isPristine
+        };
+    }
+
+    onSubmit(): void{
+        console.log(this.isNew);
     }
 } 
