@@ -10,6 +10,7 @@ import { InMemoryDataService } from './in-memory-data.service'
 import { AppComponent } from './app.component';
 import {ContatosModule} from './contatos/contatos.module';
 import {AppRoutingModule} from './app-routing.module';
+import {DialogService} from './dialog.service';
 
 @NgModule({
     //outros modulos em que iremos usar neste modulo
@@ -22,6 +23,10 @@ import {AppRoutingModule} from './app-routing.module';
     ],
     //listar todos os componentes, diretivas, pipes em que iremos usar neste modulo
     declarations: [AppComponent],
+    //fornecer servicos a nossa aplicacao
+    providers: [
+        DialogService
+    ],
     //qual eh o componente root, de onde vai comecar a nossa aplicacao
     bootstrap: [AppComponent]
 })

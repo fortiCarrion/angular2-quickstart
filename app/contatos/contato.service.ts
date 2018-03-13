@@ -52,7 +52,16 @@ export class ContatoService{
         .put(url, JSON.stringify(contato), {headers: this.headers})
         .toPromise()
         .then(() => contato as Contato)
-        .catch(this.handleError)
+        .catch(this.handleError);
+    }
+
+    delete(contato: Contato): Promise<Contato>{
+        const url = `${this.apiUrl}/${contato.id}`; //app/contatos/:id
+        return this.http
+        .delete(url, {headers: this.headers})
+        .toPromise()
+        .then(() => contato as Contato)
+        .catch(this.handleError);
     }
 
     private handleError(err: any): Promise<any>{

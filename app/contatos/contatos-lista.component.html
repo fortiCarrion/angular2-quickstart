@@ -25,17 +25,8 @@
                             <td>{{ c.nome}}</td>
                             <td>{{ c.email}}</td>
                             <td>{{ c.telefone}}</td>
-                            <td class="text-center">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-info active">
-                                        <!--[routerLink]="", chamado de property bind-->
-                                        <input type="radio" name="options" id="editar" autocomplete="off" [routerLink]="['/contato/save', c.id]"> Editar
-                                    </label>
-                                    
-                                    <label class="btn btn-danger">
-                                       <input type="radio" name="options" id="deletar" autocomplete="off"> Deletar
-                                     </label>
-                                </div>
+                            <td>
+                               <button class="btn btn-danger" (click)="onDelete(c); $event.stopPropagation()" >Deletar</button>
                             </td>
                         </tr>
    
